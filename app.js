@@ -1,11 +1,11 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const { runServer } = require('verdaccio');
 
-app.get('/', (req, res) => {
-  res.send('Hello, Cloudtype!')
-})
+async function startServer() {
+  //const app = await runServer();
+  const app = await runServer('./config/config.yaml');
+  app.listen(4873, (event) => {
+    // do something
+  });
+}
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+startServer();
